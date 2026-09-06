@@ -397,55 +397,13 @@
     </div>
   </div>
 
-<!-- Modal de Cadastro / Edi??o Inicial de Usuário -->
-    <div id="usernameModal" class="modal">
-        <div class="modal-content">
-            <h3 style="color: #fff; margin-bottom: 5px;">Identifica&ccedil;&atilde;o do Usu&aacute;rio</h3>
-            <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 15px;">Informe seu nome para iniciar o uso do sistema.</p>
-            <input type="text" id="registerUsernameInput" placeholder="Seu Nome">
-            <div style="display: flex; gap: 10px; margin-top: 5px;">
-                <button class="btn-action btn-cancel" id="cancelUsernameBtn" onclick="closeUsernameModal()" style="display: none;">Cancelar</button>
-                <button class="btn-action btn-send" style="background: var(--green-btn);" onclick="handleUsernameSubmit(event)">Salvar e Continuar</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- Modal de Ativa??o Mensal via Pix -->
-    <div id="activationModal" class="modal">
-        <div class="modal-content" style="max-height: 90vh; overflow-y: auto;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <div style="background: rgba(56, 142, 60, 0.2); padding: 6px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                    </div>
-                    <h3 style="color: #fff; font-size: 1.05rem;">Renova&ccedil;&atilde;o Mensal Pix</h3>
-                </div>
-                <button onclick="toggleActivationModal()" style="background: none; border: none; color: #aaa; font-size: 1.2rem; cursor: pointer;">&times;</button>
-            </div>
-            
-            <p style="font-size: 0.8rem; color: #aaa; margin-bottom: 15px; line-height: 1.4;">
-                Para manter o sistema ativo por mais 30 dias, apoie o projeto com qualquer valor via Pix, envie o comprovante juntamente com as informa&ccedil;&otilde;es abaixo para <strong style="color: #4caf50;">excellington@gmail.com</strong> e insira o c&oacute;digo de libera&ccedil;&atilde;o recebido.
-            </p>
 
-            <div style="background: #171a21; border: 1px solid #2a2f3d; padding: 12px; border-radius: 8px; margin-bottom: 15px;">
-                <div style="text-align: center; font-size: 0.7rem; color: #8c95a7; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 10px; text-transform: uppercase;">Dados para gera&ccedil;&atilde;o do c&oacute;digo</div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem;">
-                    <span style="color: #8c95a7;">Usu&aacute;rio:</span>
-                    <span id="activationUsernameDisplay" style="color: #64b5f6; font-weight: bold;">-</span>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
-                    <span style="color: #8c95a7;">Data de Expira&ccedil;&atilde;o:</span>
-                    <span id="activationExpirationDisplay" style="color: #e57373; font-weight: bold;">-</span>
-                </div>
-            </div>
 
-            <div style="margin-bottom: 15px;">
-                <div style="text-align: center; font-size: 0.7rem; color: #8c95a7; font-weight: bold; letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase;">Chave Pix</div>
-                <input type="text" id="pixKeyInput" readonly value="16250510850" style="background: #121418; color: #4caf50; font-family: monospace; text-align: center; font-weight: bold; border: 1px solid #2a2f3d;">
-                <button class="btn-config" onclick="copyPixKey()" id="copyPixBtn" style="mar
-                </div>
-            </div>
 
+
+
+  
   
   <!-- Canvas oculto para processamento de imagem/PDF -->
   <canvas id="filter-canvas" class="hidden"></canvas>
@@ -522,40 +480,11 @@ const USERNAME_KEY = 'excellington_username_v1';
         function toggleActivationModal() {
             const modal = document.getElementById('activationModal');
             if (modal.style.display === 'flex') {
-                modal.style.display = 'none';
-            } else {
-                modal.style.display = 'flex';
-                updateActivationInfo();
-            }
-        }
-
-        function updateActivationInfo() {
-            const username = localStorage.getItem(USERNAME_KEY) || 'N&atilde;o cadastrado';
-            document.getElementById('activationUsernameDisplay').innerText = username;
-
-            const expirationVal = localStorage.getItem(EXPIRATION_KEY);
-            const expEl = document.getElementById('activationExpirationDisplay');
-
-            if (expirationVal) {
-                const expDate = new Date(parseInt(expirationVal));
-                expEl.innerText = expDate.toLocaleDateString('pt-BR', {
-                    day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
-                });
-            } else {
-                expEl.innerText = 'N&atilde;o definido';
-            }
-        }
-
-        function copyPixKey() {
-            const input = document.getElementById('pixKeyInput');
-            input.select();
-            document.execCommand('copy');
-            const btn = document.getElementById('copyPixBtn');
-            btn.innerHTML = 'Copiado!';
-            setTimeout(() => btn.innerHTML = '<svg xmlns="http://www.w3.org
 
 
 
+
+              
     
 
     
